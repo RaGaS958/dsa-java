@@ -16,13 +16,19 @@ public class subsetXOR {
     static int subXor(ArrayList<Integer> list)
     {
         int sum=0;
-        for(int i=0;i<list.size();i++)
+        int it=(int)Math.pow(2,list.size());
+        for(int i=0;i<it;i++)
         {
             int val=0;
-            for(j=i;j<list.size();i++)
+            for(int j=0;j<list.size();j++)
             {
-
+                if((i & (1<<j))!=0)
+                {
+                    val=val^list.get(j);
+                }
             }
+            sum=sum+val;
+
         }
         return sum;
     }
