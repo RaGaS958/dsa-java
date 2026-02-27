@@ -22,6 +22,12 @@ public class singly_list {
             tail =head;
         }
         size+=1;
+    } public void insertFirstnotail(int val)
+    {
+        Node node=new Node(val);
+        node.next=head;
+        head=node;
+        size+=1;
     }
     public void insertLast(int val)
     {
@@ -34,6 +40,21 @@ public class singly_list {
         tail.next=node;
         tail=node;
         size+=1;
+    }
+    public void insertLast_notail(int val)
+    {
+        if(head==null)
+        {
+            insertFirstnotail(val);
+            return;
+        }
+        Node node=new Node(val);
+       Node temp=head;
+       while(temp.next!=null)
+       {
+           temp=temp.next;
+       }
+       temp.next=node;
     }
     public void insert(int val ,int index)
     {
@@ -75,6 +96,22 @@ public class singly_list {
             temp=temp.next;
         }
         System.out.println("TAIL");
+    }public void displays()
+    {
+        Node temp =head;
+        if(head==null)
+        {
+            System.out.println("EMPTY LINKED LIST");
+            return;
+        }
+        System.out.print("HEAD");
+        while (temp!=null)
+        {
+            System.out.print("->");
+            System.out.print(temp.val);
+            temp=temp.next;
+        }
+        System.out.println();
     }
    public int deleteFirst()
    {
@@ -154,6 +191,23 @@ public class singly_list {
            temp=temp.next;
        }
        tail.next=temp;
+   }public void cycleCreation_notail(int pos)
+   {
+       if(head==null || head.next==null)
+       {
+           return;
+       }
+       Node temp=head;
+       for(int i=1;i<pos;i++)
+       {
+           temp=temp.next;
+       }
+       Node end=head;
+       while(end.next!=null)
+       {
+           end=end.next;
+       }
+       end.next=temp;
    }
 public int getsize()
 {
@@ -269,6 +323,24 @@ public Node get(int index)
         tail=head;
         tail.next=null;
         head=prev;
+    }public void reverseList_iteration_notail()
+    {
+        if(head == null || head.next==null)
+        {
+            return;
+        }
+        Node prev=head;
+        Node pres=head.next;
+        Node next;
+        prev.next=null;
+        while(pres!=null)
+        {
+            next=pres.next;
+            pres.next=prev;
+            prev=pres;
+            pres=next;
+        }
+        head=prev;
     }
      public void rev_mid()
      {
@@ -364,36 +436,234 @@ public Node get(int index)
 
     }
 
-    public void bubble_sort()
+    public void bubble_sort() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        boolean swapped;
+
+            for (int i = 0; i < this.size; i++) {
+                swapped = false;
+                Node prev = null;
+                Node pres = head;
+                for (int j = 0; j < this.size - i - 1; j++) {
+                    if (pres.next!=null && pres.val > pres.next.val) {
+                        Node next=pres.next;
+                        pres.next=next.next;
+                        next.next=pres;
+                        if(prev==null)
+                        {
+                            head=next;
+                        }
+                        else
+                        {
+                            prev.next=next;
+                        }
+                        prev=next;
+                        swapped=true;
+                    }
+                    else
+                    {
+                        prev=pres;
+                        pres=pres.next;
+                    }
+                }
+                if(!swapped)
+                {
+                    break;
+                }
+            }
+
+
+    }
+public void rem_dup()
+{
+    if(head==null || head.next==null)
+    {
+        return;
+    }
+    Node temp=head;
+    while(temp.next!=null)
+    {
+        if(temp.next.val==temp.val)
+        {
+            temp.next=temp.next.next;
+        }
+        else {
+            temp = temp.next;
+        }
+    }
+
+}
+
+public singly_list merge(singly_list list2)
+{
+    Node temp1=this.head;
+    Node temp2=list2.head;
+    singly_list list_merge=new singly_list();
+    while(temp1 !=null && temp2 !=null)
+    {
+        if(temp1.val<=temp2.val)
+        {
+
+                list_merge.insertLast_notail(temp1.val);
+                temp1=temp1.next;
+        }
+        else
+        {
+            list_merge.insertLast_notail(temp2.val);
+            temp2=temp2.next;
+        }
+    }
+    while(temp1!=null)
+    {
+        list_merge.insertLast_notail(temp1.val);
+        temp1=temp1.next;
+    } while(temp2!=null)
+    {
+        list_merge.insertLast_notail(temp2.val);
+        temp2=temp2.next;
+    }
+    return list_merge;
+}
+public int findCircleStart()
+    {
+        int start=1;
+        Node slow=head;
+        Node fast=head;
+
+        do {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        while( fast!=null && slow!=fast);
+        Node temp=head;
+        while(temp.next!=slow)
+        {
+            temp=temp.next;
+            start++;
+        }
+        for(int i=0;i<size-start+1;i++)
+        {
+            fast=fast.next;
+        }
+        temp=head;
+        start=1;
+        while(temp.next!=fast)
+        {
+            temp=temp.next;
+            start++;
+        }
+        return start;
+    }
+    public boolean found(int sum)
+    {
+        if(head==null || head.next==null)
+        {
+            return false;
+        }
+        Node temp=head;
+        while(temp.next!=null)
+        {
+            if(temp.val==sum)
+            {
+                return true;
+            }
+            temp=temp.next;
+        }
+        return false;
+    }
+    public void magicBuild(int sum)
+    {
+        if(head==null || head.next==null)
+        {
+            return ;
+        }
+        this.reverseList_iteration_notail();
+        Node temp=head;
+        int pos=1;
+        while(temp.val!=sum)
+        {
+            temp=temp.next;
+            pos++;
+        }
+        this.cycleCreation_notail(pos);
+
+    }
+
+    public int mid()
+    {
+        if(head==null )
+        {
+            return -1;
+        }
+        else if(head.next==null)
+        {
+            return head.val;
+        }
+        else
+        {
+            Node sing=head;
+            Node dou=head;
+            while(dou!=null && dou.next!=null)
+            {
+
+                    dou = dou.next.next;
+
+                sing=sing.next;
+            }
+            return sing.val;
+        }
+    }
+
+    public void reverse_range(int l,int r)
     {
         if(head==null || head.next==null)
         {
             return;
         }
 
-        for(int i=0;i<this.size;i++)
+        Node L=head;
+        Node R=head;
+        Node start=head;
+        Node End=null;
+
+        for(int i=1;i<l;i++)
         {
-            Node prev=head;
-            Node pres=head;
-            Node next=head.next;
-            for(int j=this.size-i;j>0;j++) {
-                if(pres== head && pres.val > next.val)
-                {
-                    pres.next = next.next;
-                    next.next = pres;
-                    next = pres.next;
-                }
-                if (next != null && pres.val > next.val) {
-                    pres.next = next.next;
-                    prev.next = next;
-                    next.next = pres;
-                    prev = prev.next;
-                    next = pres.next;
-                }
-            }
+            start=L;
+            L=L.next;
         }
+        for(int i=1;i<r;i++)
+        {
+
+            R=R.next;
+        }
+        if(R.next!=null)
+        {
+            End = R.next;
+        }
+        R.next=null;
+        Node pres=L.next;
+        Node prev=L;
+       while(pres!=null)
+       {
+           Node next=pres.next;
+           pres.next=prev;
+           prev=pres;
+           pres=next;
+       }
+       if(l!=1) {
+           start.next = R;
+           L.next = End;
+       }
+       else
+       {
+           L.next = End;
+           this.head=R;
+       }
 
     }
+
 
     private class Node
     {
