@@ -138,6 +138,84 @@ public class questions {
 
 
 
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(10);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(8);
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(1);
+//        list.displays();
+//        list.reverse_range(1,10);
+//        list.displays();
+
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(10);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(8);
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(1);
+//        list.displays();
+//        list.reorder();
+//        list.displays();
+
+
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(10);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(8);
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(1);
+//        list.displays();
+//        list.kNodesReverse(3);
+//        list.displays();
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(10);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(8);
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(1);
+//        list.displays();
+//        list.kNodesAlternateReverse(3);
+//        list.displays();
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(10);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(8);
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(1);
+//        list.displays();
+//        list.rotateLeft(3);
+//        list.displays();
+
         singly_list list=new singly_list();
         list.insertFirstnotail(10);
         list.insertFirstnotail(9);
@@ -150,16 +228,10 @@ public class questions {
         list.insertFirstnotail(2);
         list.insertFirstnotail(1);
         list.displays();
-        list.reverse_range(1,10);
+        list.rotateRight(3);
         list.displays();
 
 
-
-
-
-
     }
-
-
 }
 

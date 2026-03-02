@@ -664,6 +664,148 @@ public int findCircleStart()
 
     }
 
+public void reorder()
+{
+    if(head==null || head.next==null)
+    {
+        return ;
+    }
+    Node temp=head;
+    while(temp!=null)
+    {
+        Node start=temp;
+        while(start.next.next!=null)
+        {
+            start=start.next;
+        }
+        Node tar=start.next;
+        start.next=null;
+        tar.next=temp.next;
+        temp.next=tar;
+        temp=tar.next;
+    }
+}
+
+public void kNodesReverse(int n)
+{
+    if(head==null || head.next==null)
+    {
+        return;
+    }
+    Node prev=null;
+    Node pres=head;
+    Node last=prev;
+    Node newLast=pres;
+    while(pres!=null )
+   {
+       for (int i = 0;pres !=null && i < n; i++)
+       {
+           Node next = pres.next;
+           pres.next = prev;
+           prev = pres;
+           pres = next;
+           if (next != null) {
+               next = next.next;
+           }
+
+
+       }
+       if (last != null) {
+           last.next = prev;
+       } else {
+           head = prev;
+       }
+       newLast.next=pres;
+       last=newLast;
+       newLast=pres;
+
+   }
+
+}public void kNodesAlternateReverse(int n)
+{
+    if(head==null || head.next==null)
+    {
+        return;
+    }
+    Node prev=null;
+    Node pres=head;
+    Node last=prev;
+    Node newLast=pres;
+    while(pres!=null )
+   {
+       for (int i = 0;pres !=null && i < n; i++)
+       {
+           Node next = pres.next;
+           pres.next = prev;
+           prev = pres;
+           pres = next;
+           if (next != null) {
+               next = next.next;
+           }
+
+
+       }
+       if (last != null) {
+           last.next = prev;
+       } else {
+           head = prev;
+       }
+          newLast.next=pres;
+          for(int i=0;pres!=null && i<n;i++) {
+              prev = pres;
+              pres=pres.next;
+          }
+          last=prev;
+          newLast=pres;
+
+   }
+
+}
+    public void rotateLeft(int n)
+    {
+      if(n==this.size || head==null )
+      {
+          return;
+      }
+
+      for(int i=0;i<n;i++)
+      {
+          Node pres=head;
+          Node prev=null;
+          Node start=head;
+          while(pres.next!=null)
+          {
+              prev=pres;
+              pres=pres.next;
+          }
+          prev.next=null;
+          pres.next=start;
+          head=pres;
+
+      }
+    }
+public void rotateRight(int n)
+    {
+      if(n==this.size || head==null || head.next ==null)
+      {
+          return;
+      }
+
+      for(int i=0;i<n;i++)
+      {
+          Node pres=head;
+          Node start=head;
+          Node newStart=head.next;
+          while(pres.next!=null)
+          {
+              pres=pres.next;
+          }
+          start.next=null;
+          pres.next=start;
+          head=newStart;
+
+      }
+    }
 
     private class Node
     {
