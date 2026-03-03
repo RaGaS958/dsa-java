@@ -216,20 +216,20 @@ public class questions {
 //        list.rotateLeft(3);
 //        list.displays();
 
-        singly_list list=new singly_list();
-        list.insertFirstnotail(10);
-        list.insertFirstnotail(9);
-        list.insertFirstnotail(8);
-        list.insertFirstnotail(7);
-        list.insertFirstnotail(6);
-        list.insertFirstnotail(5);
-        list.insertFirstnotail(4);
-        list.insertFirstnotail(3);
-        list.insertFirstnotail(2);
-        list.insertFirstnotail(1);
-        list.displays();
-        list.rotateRight(3);
-        list.displays();
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(10);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(8);
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(1);
+//        list.displays();
+//        list.rotateRight(3);
+//        list.displays();
 
 
     }

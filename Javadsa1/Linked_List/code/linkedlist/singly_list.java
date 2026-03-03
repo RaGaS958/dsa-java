@@ -807,6 +807,61 @@ public void rotateRight(int n)
       }
     }
 
+    public int listBinary()
+    {
+        if(head == null)
+        {
+            return -1;
+        }
+        int val=0;
+        this.reverseList_iteration_notail();
+        Node temp=head;
+        for(int i=0;temp!=null;i++)
+        {
+            val+=((int)(Math.pow(2,i)))*temp.val;
+            temp=temp.next;
+        }
+
+        return val;
+    }
+     public void uniqueList(singly_list list2, singly_list list3)
+     {
+         Node tempA=this.head;
+         Node tempB=list2.head;
+         while(tempA.next!=null)
+         {
+             tempA=tempA.next;
+         }
+         while(tempB.next!=null)
+         {
+             tempB=tempB.next;
+         }
+         tempA.next=list3.head;
+         tempB.next=list3.head;
+     }
+
+     public int intersectionFound(singly_list list2)
+     {
+         Node tempA=this.head;
+         Node tempB=list2.head;
+         while(tempA!=null)
+         {
+             while(tempB!=null)
+             {
+                 if(tempB == tempA)
+                 {
+                     return tempB.val;
+                 }
+                 tempB=tempB.next;
+             }
+             tempB=list2.head;
+             tempA=tempA.next;
+         }
+
+
+         return -1;
+     }
+
     private class Node
     {
         private int val;
