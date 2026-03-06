@@ -862,6 +862,65 @@ public void rotateRight(int n)
          return -1;
      }
 
+     public void Swaps(int pos)
+     {
+         if(head==null | head.next==null)
+         {
+             return ;
+         }
+         Node first=head;
+         Node first_pres=head;
+         Node Second=head;
+         Node Second_pres=head;
+         int run1=pos;
+         int run2=this.size-pos;
+
+         for(int i=1;i<run1 && first!=null;i++)
+         {
+             first=first.next;
+             if(i>1)
+             {
+                 first_pres=first_pres.next;
+
+             }
+         }
+         for(int i=0;i<run2 && Second!=null;i++)
+         {
+             Second=Second.next;
+             if(i>0)
+             {
+                 Second_pres=Second_pres.next;
+
+             }
+         }
+         if(pos==1)
+         {
+
+             Second.next=first.next;
+             head=Second;
+             Second_pres.next=first;
+             first.next=null;
+         }
+         else if(first.next==Second) {
+             first.next = Second.next;
+             Second.next = first;
+             first_pres.next = Second;
+         }
+         else if(first==Second)
+         {
+             return;
+         }
+         else
+         {
+             Node  temp=Second.next;
+             Second.next=first.next;
+             first_pres.next=Second;
+             Second_pres.next=first;
+             first.next=temp;
+         }
+
+     }
+
     private class Node
     {
         private int val;
