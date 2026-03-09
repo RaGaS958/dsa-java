@@ -46,16 +46,70 @@ public class leet_code_medium {
 
         // question:-https://leetcode.com/problems/swapping-nodes-in-a-linked-list/description/
 
-        singly_list list=new singly_list();
-        list.insertFirstnotail(6);
-        list.insertFirstnotail(5);
-       list.insertFirstnotail(4);
-        list.insertFirstnotail(3);
-       list.insertFirstnotail(2);
-       list.insertFirstnotail(1);
-       list.displays();
-       list.Swaps(1);
-        list.displays();
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//       list.insertFirstnotail(4);
+//        list.insertFirstnotail(3);
+//       list.insertFirstnotail(2);
+//       list.insertFirstnotail(1);
+//       list.displays();
+//       list.Swaps(1);
+//        list.displays();
+
+
+//-----------------------------------------------------------------------------------------------------------------
+
+        // question:-https://leetcode.com/problems/add-two-numbers/description/
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(9);
+//        list.insertFirstnotail(9);
+//        list.displays();
+//        singly_list list1=new singly_list();
+//        list1.insertFirstnotail(9);
+//        list1.insertFirstnotail(9);
+//        list1.insertFirstnotail(9);
+//        list1.insertFirstnotail(9);
+//        list1.displays();
+//        singly_list res=list.addTwoList(list1);
+//        res.displays();
+
+
+
+//-----------------------------------------------------------------------------------------------------------------
+
+        // question:-https://leetcode.com/problems/add-two-numbers-ii/description/
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(7);
+//        list.displays();
+//        singly_list list1=new singly_list();
+//        list1.insertFirstnotail(4);
+//        list1.insertFirstnotail(6);
+//        list1.insertFirstnotail(5);
+//        list1.displays();
+//        singly_list res=list.addTwoListRight(list1);
+//        res.displays();
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
 
 
 

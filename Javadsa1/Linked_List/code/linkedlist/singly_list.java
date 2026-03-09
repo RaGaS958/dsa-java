@@ -920,6 +920,82 @@ public void rotateRight(int n)
          }
 
      }
+     public singly_list addTwoList(singly_list list2)
+     {
+         singly_list res=new singly_list();
+         int rem=0;
+         Node temp1=this.head;
+         Node temp2=list2.head;
+         if(temp1==null)
+         {
+             return list2;
+         }
+         else if(temp2==null)
+         {
+             return this;
+         }
+
+         int val1=0;
+         int val2=0;
+
+         do {
+             if(temp1!=null)
+             {
+                 val1= temp1.val;
+                 temp1=temp1.next;
+             }
+             if(temp2!=null)
+             {
+                 val2= temp2.val;
+                 temp2=temp2.next;
+             }
+             res.insertFirstnotail((val1+val2+rem)%10);
+             rem=(val1+val2+rem)/10;
+             val1=0;
+             val2=0;
+         }while(temp1!=null || temp2!=null || rem!=0);
+        res.reverseList_iteration_notail();
+        return res;
+     }
+public singly_list addTwoListRight(singly_list list2)
+     {
+         singly_list res=new singly_list();
+         this.reverseList_iteration();
+         list2.reverseList_iteration();
+         int rem=0;
+         Node temp1=this.head;
+         Node temp2=list2.head;
+         if(temp1==null)
+         {
+             return list2;
+         }
+         else if(temp2==null)
+         {
+             return this;
+         }
+
+         int val1=0;
+         int val2=0;
+
+         do {
+             if(temp1!=null)
+             {
+                 val1= temp1.val;
+                 temp1=temp1.next;
+             }
+             if(temp2!=null)
+             {
+                 val2= temp2.val;
+                 temp2=temp2.next;
+             }
+             res.insertFirstnotail((val1+val2+rem)%10);
+             rem=(val1+val2+rem)/10;
+             val1=0;
+             val2=0;
+         }while(temp1!=null || temp2!=null || rem!=0);
+        return res;
+     }
+
 
     private class Node
     {
