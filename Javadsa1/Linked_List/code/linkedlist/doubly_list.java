@@ -184,7 +184,49 @@ public void insert(int val,int index)
 
     }
 
+public void creatingchild(doubly_list list1,doubly_list list2,int pos1,int pos2)
+{
+    Node temp1=this.head;
+    Node temp2=list1.head;
 
+    for(int i=1;i<pos1;i++)
+    {
+        temp1=temp1.next;
+    }
+    temp1.child=list1.head;
+    for(int i=1;i<pos2;i++)
+    {
+        temp2=temp2.next;
+    }
+    temp2.child=list2.head;
+
+}
+
+public void flatten ()
+{
+    Node temp=this.head;
+    while(temp!=null)
+    {
+        if(temp.child!=null)
+        {
+            Node temp1=temp.child;
+            Node newnext=null;
+            if(temp.next!=null) {
+              newnext = temp.next;
+            }
+            while(temp1.next!=null)
+            {
+                temp1=temp1.next;
+            }
+            temp.next=temp.child;
+            temp.child.prev=temp;
+            temp.child=null;
+            temp1.next=newnext;
+            newnext.prev=temp1;
+        }
+        temp=temp.next;
+    }
+}
 
 
 
@@ -210,6 +252,7 @@ private class Node
     int val;
     Node next;
     Node prev;
+    Node child;
     public Node(int val)
     {
         this.val=val;

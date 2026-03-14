@@ -103,12 +103,70 @@ public class leet_code_medium {
 
 // ------------------------------------------------------------------------------------------------------------
 
+        //questions:-https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/description/
 
 
+//        doubly_list list=new doubly_list();
+//        list.insertLast(1);
+//        list.insertLast(2);
+//        list.insertLast(3);
+//        list.insertLast(4);
+//        list.insertLast(5);
+//        list.insertLast(6);
+//        list.display();
+//
+//        doubly_list list1=new doubly_list();
+//
+//        list1.insertLast(7);
+//        list1.insertLast(8);
+//        list1.insertLast(9);
+//        list1.insertLast(10);
+//        list1.display();
+//
+//        doubly_list list2=new doubly_list();
+//        list2.insertLast(11);
+//        list2.insertLast(12);
+//        list2.display();
+//
+//        list.creatingchild(list1,list2,3,2);
+//        list.flatten();
+//        list.display();
+
+// ------------------------------------------------------------------------------------------------------------
+
+  // question:-https://leetcode.com/problems/lru-cache/description/
+
+//        LRU cache=new LRU(2);
+//        cache.put(1,1);
+//        cache.displays();
+//        cache.put(2,2);
+//        cache.displays();
+//        System.out.println(cache.get(1));
+//        cache.put(3,3);
+//        cache.displays();
+//        System.out.println(cache.get(2));
+//        cache.put(4,4);
+//        cache.displays();
 
 
+// ------------------------------------------------------------------------------------------------------------
 
 
+  // question:-https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/description/
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(1);
+//        list.displays();
+//        list.RemoveDupSecond();
+//        list.displays();
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 

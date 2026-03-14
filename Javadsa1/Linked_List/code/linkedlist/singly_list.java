@@ -996,6 +996,42 @@ public singly_list addTwoListRight(singly_list list2)
         return res;
      }
 
+     public void RemoveDupSecond()
+     {
+         if(head==null && head.next==null)
+         {
+             return;
+         }
+         Node prev=null;
+         Node pres=head;
+         while(pres!=null)
+         {
+
+                 if( pres.next!=null && pres.next.val==pres.val)
+                 {
+                  while(pres.next!=null && pres.val==pres.next.val)
+                  {
+                      pres=pres.next;
+
+                  }
+
+                  if(prev==null)
+                  {
+                      head=pres.next;
+                  }
+                  else
+                  {
+                      prev.next=pres.next;
+                  }
+                  pres=pres.next;
+                 }
+                 else {
+                     prev = pres;
+                     pres = pres.next;
+                 }
+
+         }
+     }
 
     private class Node
     {
