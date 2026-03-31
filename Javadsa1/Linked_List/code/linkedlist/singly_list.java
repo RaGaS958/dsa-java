@@ -2,15 +2,21 @@ package linkedlist;
 
 import org.w3c.dom.Node;
 
+import java.util.ArrayList;
+
 public class singly_list {
 
     private Node head;
     private Node tail;
     private int size;
+    private int rand;
+    private Node randpos;
 
     public singly_list()
     {
         this.size=0;
+        this.rand=0;
+        this.randpos=head;
     }
     public void insertFirst(int val)
     {
@@ -107,8 +113,8 @@ public class singly_list {
         System.out.print("HEAD");
         while (temp!=null)
         {
-            System.out.print("->");
-            System.out.print(temp.val);
+            System.out.print("-> ");
+            System.out.print(temp.val+" ");
             temp=temp.next;
         }
         System.out.println();
@@ -1032,6 +1038,261 @@ public singly_list addTwoListRight(singly_list list2)
 
          }
      }
+     public void partion(int x)
+     {
+         if(head==null | head.next==null)
+         {
+             return;
+         }
+         Node prev=head;
+         Node pres=head.next;
+         while(pres!=null)
+         {
+             if(pres.val<x) {
+
+                 Node temp = pres;
+                 Node last=head;
+                 while(last.val<x && last.next.val<x)
+                 {
+                     last=last.next;
+                 }
+
+                     prev.next = pres.next;
+
+
+                 if(last==head && last.val>=x)
+                 {
+                     temp.next=last;
+                     head=temp;
+                     pres = prev.next;
+
+                 }
+                 else {
+                     temp.next = last.next;
+                     last.next = temp;
+                     pres = prev.next;
+                 }
+
+             }
+             else
+             {
+                 prev=pres;
+                 pres=pres.next;
+             }
+         }
+
+     }
+public void removeConsecutivezero()
+{
+    if(head==null || head.next==null)
+    {
+        return;
+    }
+    Node prev=null;
+    Node pres=head;
+    while(head!=null && pres.next!=null )
+    {
+        if(pres.val+pres.next.val==0)
+        {
+            if(prev==null)
+            {
+                head=pres.next.next;
+            }
+            else
+            {
+                prev.next=pres.next.next;
+            }
+            pres=head;
+            prev=null;
+        }
+        else
+        {
+            prev=pres;
+            pres=pres.next;
+        }
+    }
+}
+public void StrictlyGreater() {
+    if (head == null || head.next == null) {
+        System.out.println("[]");
+        return;
+    }
+    ArrayList<Integer> listval = new ArrayList<>();
+    Node pres = head;
+    while (pres != null) {
+        Node temp = pres.next;
+        int max = pres.val;
+        while (temp != null) {
+            if (temp.val > max) {
+                max = temp.val;
+            }
+            temp = temp.next;
+        }
+        if (pres.val == max) {
+            listval.add(0);
+        } else {
+            listval.add(max);
+        }
+        pres = pres.next;
+    }
+    System.out.println(listval);
+}
+
+    public void oddEven()
+    {
+        if(head==null | head.next==null)
+        {
+            return;
+        }
+        Node oddEnd=null;
+        Node evenStart=head.next;
+        Node presodd=head;
+        Node preseven=head.next;
+        while(preseven!=null && presodd!=null)
+        {
+            presodd.next=presodd.next.next;
+            presodd=presodd.next;
+            preseven.next=preseven.next.next;
+            preseven=preseven.next;
+
+
+        }
+      presodd.next=evenStart;
+
+
+    }
+
+public void getRandom()
+{
+    if(head==null )
+    {
+        System.out.println("Empty String");
+        return ;
+    }
+    Node temp=randpos;
+    for(int i=0;i<rand%this.size;i++)
+    {
+        if(temp!=null)
+        {
+            temp=temp.next;
+        }
+        else
+        {
+            temp=head;
+        }
+
+    }
+    if(temp==null)
+    {
+        temp=head;
+    }
+    System.out.println(temp.val);
+    randpos=temp;
+    rand=(rand+1)%this.size;
+
+}
+
+private ArrayList<Node> split(int k)
+{
+    if(head==null)
+    {
+        return new ArrayList<>();
+    }
+    ArrayList<Node> list=new ArrayList<>();
+
+    if(k==1)
+    {
+        list.add(this.head);
+    }
+    else if(k>=this.size)
+    {
+        Node temp=head;
+        while(temp!=null)
+        {
+            list.add(temp);
+            temp=temp.next;
+            list.getLast().next=null;
+        }
+    }
+    else  {
+
+        if(this.size%k==0)
+        {
+            Node temp=head;
+            Node next=null;
+            while(temp!=null)
+            {
+                list.add(temp);
+                for(int i=0;i<(this.size/k)-1 && temp!=null;i++)
+                {
+                    temp=temp.next;
+
+                }
+                next=temp.next;
+                temp.next=null;
+                temp=next;
+
+            }
+        }
+        else
+        {
+            Node temp=head;
+            Node next=null;
+            int count=this.size%k;
+            while(count>0 && temp!=null)
+            {
+                list.add(temp);
+                count--;
+                for(int i=0;i<(this.size/k) && temp!=null;i++)
+                {
+                    temp=temp.next;
+
+                }
+                next=temp.next;
+                temp.next=null;
+                temp=next;
+
+            }
+            while(temp!=null)
+            {
+                list.add(temp);
+                for(int i=0;i<(this.size/k)-1 && temp!=null;i++)
+                {
+                    temp=temp.next;
+
+                }
+                next=temp.next;
+                temp.next=null;
+                temp=next;
+
+            }
+
+        }
+
+    }
+
+
+    return list;
+}
+
+
+public void displayListsplit(int k,int ele,int col )
+{
+    ArrayList<Node> list=this.split(k);
+    Node temp=list.get(ele);
+    for(int i=0;i<col && temp!=null;i++)
+    {
+        temp=temp.next;
+    }
+    if(temp!=null)
+    System.out.println(temp.val);
+    else
+        System.out.println("Null");
+}
+
+
+
+
 
     private class Node
     {

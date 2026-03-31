@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.ArrayList;
+
 public class leet_code_medium {
 
     public static void main(String[] args) {
@@ -167,7 +169,132 @@ public class leet_code_medium {
 //        list.displays();
 
 // ------------------------------------------------------------------------------------------------------------
+// question:-https://leetcode.com/problems/design-browser-history/description/
+//   browserHistory homepage=new browserHistory("www.google.com");
+//   homepage.visits("www.facebook.com");
+//   homepage.visits("www.leetcode.com");
+//   homepage.visits("www.instagram.com");
+//   homepage.visits("www.youtube.com");
+//   homepage.visits("www.googlecolab.com");
+//   homepage.visits("www.facebook.com");
+//   homepage.currentUrl();
+//   homepage.forward(1);
+//   homepage.back(3);
+//   homepage.currentUrl();
+//   homepage.forward(2);
+//   homepage.currentUrl();
 
+// ------------------------------------------------------------------------------------------------------------
+//
+// question:-https://leetcode.com/problems/partition-list/description/
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(1);
+//        list.insertFirstnotail(5);
+//        list.displays();
+//        list.partion(3);
+//        list.displays();
+
+// ------------------------------------------------------------------------------------------------------------
+        // question:-https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/description/
+
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(-2);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(-3);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(1);
+//        list.insertFirstnotail(-1);
+//        list.displays();
+//        list.removeConsecutivezero();
+//        list.displays();
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+        // question:-https://leetcode.com/problems/next-greater-node-in-linked-list/description/
+
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(2);
+//        list.displays();
+//        list.StrictlyGreater();
+
+// ------------------------------------------------------------------------------------------------------------
+
+        // question:-https://leetcode.com/problems/odd-even-linked-list/description/
+
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(1);
+//        list.insertFirstnotail(2);
+//        list.displays();
+//        list.oddEven();
+//        list.displays();
+
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+        // question:-https://leetcode.com/problems/odd-even-linked-list/description/
+
+
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(1);
+//        list.insertFirstnotail(2);
+//        list.displays();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+//        list.getRandom();
+
+// ------------------------------------------------------------------------------------------------------------
+        // question:-https://leetcode.com/problems/split-linked-list-in-parts/description/
+
+//
+//        singly_list list=new singly_list();
+//        list.insertFirstnotail(7);
+//        list.insertFirstnotail(6);
+//        list.insertFirstnotail(5);
+//        list.insertFirstnotail(4);
+//        list.insertFirstnotail(3);
+//        list.insertFirstnotail(2);
+//        list.insertFirstnotail(1);
+//        list.displays();
+//        list.displayListsplit(2,1,2);
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 
