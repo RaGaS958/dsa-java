@@ -3,6 +3,7 @@ package linkedlist;
 import org.w3c.dom.Node;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class singly_list {
 
@@ -12,222 +13,191 @@ public class singly_list {
     private int rand;
     private Node randpos;
 
-    public singly_list()
-    {
-        this.size=0;
-        this.rand=0;
-        this.randpos=head;
+    public singly_list() {
+        this.size = 0;
+        this.rand = 0;
+        this.randpos = head;
     }
-    public void insertFirst(int val)
-    {
-        Node node=new Node(val);
-        node.next=head;
-        head=node;
-        if(tail==null)
-        {
-            tail =head;
+
+    public void insertFirst(int val) {
+        Node node = new Node(val);
+        node.next = head;
+        head = node;
+        if (tail == null) {
+            tail = head;
         }
-        size+=1;
-    } public void insertFirstnotail(int val)
-    {
-        Node node=new Node(val);
-        node.next=head;
-        head=node;
-        size+=1;
+        size += 1;
     }
-    public void insertLast(int val)
-    {
-        if(tail==null)
-        {
+
+    public void insertFirstnotail(int val) {
+        Node node = new Node(val);
+        node.next = head;
+        head = node;
+        size += 1;
+    }
+
+    public void insertLast(int val) {
+        if (tail == null) {
             insertFirst(val);
             return;
         }
-        Node node=new Node(val);
-        tail.next=node;
-        tail=node;
-        size+=1;
+        Node node = new Node(val);
+        tail.next = node;
+        tail = node;
+        size += 1;
     }
-    public void insertLast_notail(int val)
-    {
-        if(head==null)
-        {
+
+    public void insertLast_notail(int val) {
+        if (head == null) {
             insertFirstnotail(val);
             return;
         }
-        Node node=new Node(val);
-       Node temp=head;
-       while(temp.next!=null)
-       {
-           temp=temp.next;
-       }
-       temp.next=node;
+        Node node = new Node(val);
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = node;
     }
-    public void insert(int val ,int index)
-    {
-        if(index==0)
-        {
+
+    public void insert(int val, int index) {
+        if (index == 0) {
             insertFirst(val);
             return;
-        }
-        else if(index==size)
-        {
+        } else if (index == size) {
             insertLast(val);
             return;
-        }
-        else {
+        } else {
 
-             Node temp = head;
-             for(int i=1;i<index;i++)
-             {
-                 temp=temp.next;
-             }
-            Node node =new Node(val,temp.next);
-             temp.next=node;
+            Node temp = head;
+            for (int i = 1; i < index; i++) {
+                temp = temp.next;
+            }
+            Node node = new Node(val, temp.next);
+            temp.next = node;
 
         }
 
     }
-    public void display()
-    {
-        Node temp =head;
-        if(head==null)
-        {
+
+    public void display() {
+        Node temp = head;
+        if (head == null) {
             System.out.println("EMPTY LINKED LIST");
             return;
         }
         System.out.print("HEAD->");
-        while (temp!=null)
-        {
-            System.out.print(temp.val+"->");
-            temp=temp.next;
+        while (temp != null) {
+            System.out.print(temp.val + "->");
+            temp = temp.next;
         }
         System.out.println("TAIL");
-    }public void displays()
-    {
-        Node temp =head;
-        if(head==null)
-        {
+    }
+
+    public void displays() {
+        Node temp = head;
+        if (head == null) {
             System.out.println("EMPTY LINKED LIST");
             return;
         }
         System.out.print("HEAD");
-        while (temp!=null)
-        {
+        while (temp != null) {
             System.out.print("-> ");
-            System.out.print(temp.val+" ");
-            temp=temp.next;
+            System.out.print(temp.val + " ");
+            temp = temp.next;
         }
         System.out.println();
     }
-   public int deleteFirst()
-   {
-       if(size==0)
-       {
-           return -1;
-       }
-       else if(head.next==null)
-       {
-           size--;
-           int value=head.val;
-           head=null;
-           return value;
-       }
-       else
-       {
-           int value=head.val;
-           head=head.next;
-           size--;
-           return value;
-       }
-   }
-   public int deleteLast()
-   {
-       if(size<=1)
-       {
-           return deleteFirst();
-       }
-       else
-       {
-           Node temp=head;
-           for(int i=1;i<size-1;i++)
-           {
-               temp=temp.next;
-           }
-           int value=temp.next.val;
-           tail=temp;
-           tail.next=null;
-           size--;
-           return value;
-       }
-   }
 
-   public int   delete(int index)
-   {
-       if(index==0)
-       {
-           return deleteFirst();
-       }
-       else if (index==size)
-       {
-           return deleteLast();
-       }
-      else
-       {
-           Node temp=head;
-           for(int i=1;i<index;i++)
-           {
-               temp=temp.next;
-           }
-           int value=temp.next.val;
-           temp.next=temp.next.next;
-           size--;
-           return value;
-       }
-
-   }
-   public void cycleCreation(int pos)
-   {
-       if(head==null || head.next==null)
-       {
-           return;
-       }
-       Node temp=head;
-       for(int i=1;i<pos;i++)
-       {
-           temp=temp.next;
-       }
-       tail.next=temp;
-   }public void cycleCreation_notail(int pos)
-   {
-       if(head==null || head.next==null)
-       {
-           return;
-       }
-       Node temp=head;
-       for(int i=1;i<pos;i++)
-       {
-           temp=temp.next;
-       }
-       Node end=head;
-       while(end.next!=null)
-       {
-           end=end.next;
-       }
-       end.next=temp;
-   }
-public int getsize()
-{
-    return size+1;
-}
-public Node get(int index)
-{
-    Node node = head;
-    for (int i = 0; i < index; i++) {
-        node = node.next;
+    public int deleteFirst() {
+        if (size == 0) {
+            return -1;
+        } else if (head.next == null) {
+            size--;
+            int value = head.val;
+            head = null;
+            return value;
+        } else {
+            int value = head.val;
+            head = head.next;
+            size--;
+            return value;
+        }
     }
-    return node;
 
-}
+    public int deleteLast() {
+        if (size <= 1) {
+            return deleteFirst();
+        } else {
+            Node temp = head;
+            for (int i = 1; i < size - 1; i++) {
+                temp = temp.next;
+            }
+            int value = temp.next.val;
+            tail = temp;
+            tail.next = null;
+            size--;
+            return value;
+        }
+    }
+
+    public int delete(int index) {
+        if (index == 0) {
+            return deleteFirst();
+        } else if (index == size) {
+            return deleteLast();
+        } else {
+            Node temp = head;
+            for (int i = 1; i < index; i++) {
+                temp = temp.next;
+            }
+            int value = temp.next.val;
+            temp.next = temp.next.next;
+            size--;
+            return value;
+        }
+
+    }
+
+    public void cycleCreation(int pos) {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node temp = head;
+        for (int i = 1; i < pos; i++) {
+            temp = temp.next;
+        }
+        tail.next = temp;
+    }
+
+    public void cycleCreation_notail(int pos) {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node temp = head;
+        for (int i = 1; i < pos; i++) {
+            temp = temp.next;
+        }
+        Node end = head;
+        while (end.next != null) {
+            end = end.next;
+        }
+        end.next = temp;
+    }
+
+    public int getsize() {
+        return size + 1;
+    }
+
+    public Node get(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+
+    }
+
     public Node find(int value) {
         Node node = head;
         while (node != null) {
@@ -240,202 +210,177 @@ public Node get(int index)
     }
 
     // question:-cyclic_detection
-    public void cyclic_detection()
-    {
+    public void cyclic_detection() {
 
         // cycle created
 
-        Node slow=head;
-        Node fast=head;
+        Node slow = head;
+        Node fast = head;
 
-       do {
-           slow=slow.next;
-           fast=fast.next.next;
-       }
-        while( fast!=null && slow!=fast);
+        do {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        while (fast != null && slow != fast);
 
-            if(fast!=null)
-            {
-                System.out.println("Cycle found");
-            }
-        else
-            {
-                System.out.println("Cycle not found");
-            }
+        if (fast != null) {
+            System.out.println("Cycle found");
+        } else {
+            System.out.println("Cycle not found");
+        }
 
     }
 
 // question length of cycle
 
-    public int cycleLength()
-    {
+    public int cycleLength() {
 
-        if(head==null || head.next==null)
-        {
+        if (head == null || head.next == null) {
             return 0;
         }
-        Node slow=head;
-        Node fast=head;
+        Node slow = head;
+        Node fast = head;
 
         do {
-            slow=slow.next;
-            fast=fast.next.next;
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        while( fast!=null && slow!=fast);
-        int length =0;
+        while (fast != null && slow != fast);
+        int length = 0;
         do {
-            slow=slow.next;
+            slow = slow.next;
             length++;
         }
-        while( slow!=fast);
+        while (slow != fast);
         return length;
     }
 
-    public void reverseList()
-    {
-        Node temp=head;
-       temp= reversal(temp);
+    public void reverseList() {
+        Node temp = head;
+        temp = reversal(temp);
     }
-    private Node reversal(Node temp)
-    {
-        if(temp.next==null)
-        {
-            head=temp;
+
+    private Node reversal(Node temp) {
+        if (temp.next == null) {
+            head = temp;
             return temp;
 
         }
-        Node nex=reversal(temp.next);
-        nex.next=temp;
-        temp.next=null;
-        tail=temp;
+        Node nex = reversal(temp.next);
+        nex.next = temp;
+        temp.next = null;
+        tail = temp;
         return temp;
     }
-    public void reverseList_iteration()
-    {
-        if(head == null || head.next==null)
-        {
+
+    public void reverseList_iteration() {
+        if (head == null || head.next == null) {
             return;
         }
-        Node prev=head;
-        Node pres=head.next;
+        Node prev = head;
+        Node pres = head.next;
         Node next;
-        while(pres!=null)
-        {
-            next=pres.next;
-            pres.next=prev;
-            prev=pres;
-            pres=next;
+        while (pres != null) {
+            next = pres.next;
+            pres.next = prev;
+            prev = pres;
+            pres = next;
         }
-        tail=head;
-        tail.next=null;
-        head=prev;
-    }public void reverseList_iteration_notail()
-    {
-        if(head == null || head.next==null)
-        {
-            return;
-        }
-        Node prev=head;
-        Node pres=head.next;
-        Node next;
-        prev.next=null;
-        while(pres!=null)
-        {
-            next=pres.next;
-            pres.next=prev;
-            prev=pres;
-            pres=next;
-        }
-        head=prev;
+        tail = head;
+        tail.next = null;
+        head = prev;
     }
-     public void rev_mid()
-     {
-         if(head == null || head.next==null)
-         {
-             return;
-         }
-         Node temp=head;
-         for(int i=1;i< this.size/2;++i)
-         {
-             temp=temp.next;
-         }
-         if(this.size%2!=0) {
-             temp=temp.next;
-         }
-         Node mid = temp;
-         Node prev=temp.next;
-         Node pres=temp.next.next;
-         Node next;
-         while(pres!=null)
-         {
-             next=pres.next;
-             pres.next=prev;
-             prev=pres;
-             pres=next;
-         }
-         tail=mid.next;
-         tail.next=null;
-         mid.next=prev;
 
-     }
-
-    public void rev_pos(int pos)
-    {
-        if(head == null || head.next==null)
-        {
+    public void reverseList_iteration_notail() {
+        if (head == null || head.next == null) {
             return;
         }
-        Node temp=head;
-        for(int i=1;i< pos;++i)
-        {
-            temp=temp.next;
+        Node prev = head;
+        Node pres = head.next;
+        Node next;
+        prev.next = null;
+        while (pres != null) {
+            next = pres.next;
+            pres.next = prev;
+            prev = pres;
+            pres = next;
+        }
+        head = prev;
+    }
+
+    public void rev_mid() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node temp = head;
+        for (int i = 1; i < this.size / 2; ++i) {
+            temp = temp.next;
+        }
+        if (this.size % 2 != 0) {
+            temp = temp.next;
         }
         Node mid = temp;
-        Node prev=temp.next;
-        Node pres=temp.next.next;
+        Node prev = temp.next;
+        Node pres = temp.next.next;
         Node next;
-        while(pres!=null)
-        {
-            next=pres.next;
-            pres.next=prev;
-            prev=pres;
-            pres=next;
+        while (pres != null) {
+            next = pres.next;
+            pres.next = prev;
+            prev = pres;
+            pres = next;
         }
-        tail=mid.next;
-        tail.next=null;
-        mid.next=prev;
+        tail = mid.next;
+        tail.next = null;
+        mid.next = prev;
 
     }
-    public void checkPallindrome()
-    {
-        if(head==null  || head.next==null )
-        {
+
+    public void rev_pos(int pos) {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node temp = head;
+        for (int i = 1; i < pos; ++i) {
+            temp = temp.next;
+        }
+        Node mid = temp;
+        Node prev = temp.next;
+        Node pres = temp.next.next;
+        Node next;
+        while (pres != null) {
+            next = pres.next;
+            pres.next = prev;
+            prev = pres;
+            pres = next;
+        }
+        tail = mid.next;
+        tail.next = null;
+        mid.next = prev;
+
+    }
+
+    public void checkPallindrome() {
+        if (head == null || head.next == null) {
             System.out.println("Pallindrome");
             return;
         }
-        Node start=head;
-        Node end=head;
+        Node start = head;
+        Node end = head;
         this.rev_mid();
-        for(int i=0;i<this.size/2;i++)
-        {
-            end=end.next;
+        for (int i = 0; i < this.size / 2; i++) {
+            end = end.next;
         }
-        if(this.size %2!=0)
-        {
-            end=end.next;
+        if (this.size % 2 != 0) {
+            end = end.next;
         }
         this.display();
-        while(start!=null && end!=null && start.val==end.val)
-        {
-            start=start.next;
-            end=end.next;
+        while (start != null && end != null && start.val == end.val) {
+            start = start.next;
+            end = end.next;
         }
-        if(end==null)
-        {
+        if (end == null) {
             System.out.println("Palindrome");
-        }
-        else
-        {
+        } else {
             System.out.println("Not Pallindrome");
         }
         this.rev_mid();
@@ -448,848 +393,743 @@ public Node get(int index)
         }
         boolean swapped;
 
-            for (int i = 0; i < this.size; i++) {
-                swapped = false;
-                Node prev = null;
-                Node pres = head;
-                for (int j = 0; j < this.size - i - 1; j++) {
-                    if (pres.next!=null && pres.val > pres.next.val) {
-                        Node next=pres.next;
-                        pres.next=next.next;
-                        next.next=pres;
-                        if(prev==null)
-                        {
-                            head=next;
-                        }
-                        else
-                        {
-                            prev.next=next;
-                        }
-                        prev=next;
-                        swapped=true;
+        for (int i = 0; i < this.size; i++) {
+            swapped = false;
+            Node prev = null;
+            Node pres = head;
+            for (int j = 0; j < this.size - i - 1; j++) {
+                if (pres.next != null && pres.val > pres.next.val) {
+                    Node next = pres.next;
+                    pres.next = next.next;
+                    next.next = pres;
+                    if (prev == null) {
+                        head = next;
+                    } else {
+                        prev.next = next;
                     }
-                    else
-                    {
-                        prev=pres;
-                        pres=pres.next;
-                    }
-                }
-                if(!swapped)
-                {
-                    break;
+                    prev = next;
+                    swapped = true;
+                } else {
+                    prev = pres;
+                    pres = pres.next;
                 }
             }
-
-
-    }
-public void rem_dup()
-{
-    if(head==null || head.next==null)
-    {
-        return;
-    }
-    Node temp=head;
-    while(temp.next!=null)
-    {
-        if(temp.next.val==temp.val)
-        {
-            temp.next=temp.next.next;
+            if (!swapped) {
+                break;
+            }
         }
-        else {
-            temp = temp.next;
-        }
+
+
     }
 
-}
+    public void rem_dup() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node temp = head;
+        while (temp.next != null) {
+            if (temp.next.val == temp.val) {
+                temp.next = temp.next.next;
+            } else {
+                temp = temp.next;
+            }
+        }
 
-public singly_list merge(singly_list list2)
-{
-    Node temp1=this.head;
-    Node temp2=list2.head;
-    singly_list list_merge=new singly_list();
-    while(temp1 !=null && temp2 !=null)
-    {
-        if(temp1.val<=temp2.val)
-        {
+    }
+
+    public singly_list merge(singly_list list2) {
+        Node temp1 = this.head;
+        Node temp2 = list2.head;
+        singly_list list_merge = new singly_list();
+        while (temp1 != null && temp2 != null) {
+            if (temp1.val <= temp2.val) {
 
                 list_merge.insertLast_notail(temp1.val);
-                temp1=temp1.next;
+                temp1 = temp1.next;
+            } else {
+                list_merge.insertLast_notail(temp2.val);
+                temp2 = temp2.next;
+            }
         }
-        else
-        {
+        while (temp1 != null) {
+            list_merge.insertLast_notail(temp1.val);
+            temp1 = temp1.next;
+        }
+        while (temp2 != null) {
             list_merge.insertLast_notail(temp2.val);
-            temp2=temp2.next;
+            temp2 = temp2.next;
         }
+        return list_merge;
     }
-    while(temp1!=null)
-    {
-        list_merge.insertLast_notail(temp1.val);
-        temp1=temp1.next;
-    } while(temp2!=null)
-    {
-        list_merge.insertLast_notail(temp2.val);
-        temp2=temp2.next;
-    }
-    return list_merge;
-}
-public int findCircleStart()
-    {
-        int start=1;
-        Node slow=head;
-        Node fast=head;
+
+    public int findCircleStart() {
+        int start = 1;
+        Node slow = head;
+        Node fast = head;
 
         do {
-            slow=slow.next;
-            fast=fast.next.next;
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        while( fast!=null && slow!=fast);
-        Node temp=head;
-        while(temp.next!=slow)
-        {
-            temp=temp.next;
+        while (fast != null && slow != fast);
+        Node temp = head;
+        while (temp.next != slow) {
+            temp = temp.next;
             start++;
         }
-        for(int i=0;i<size-start+1;i++)
-        {
-            fast=fast.next;
+        for (int i = 0; i < size - start + 1; i++) {
+            fast = fast.next;
         }
-        temp=head;
-        start=1;
-        while(temp.next!=fast)
-        {
-            temp=temp.next;
+        temp = head;
+        start = 1;
+        while (temp.next != fast) {
+            temp = temp.next;
             start++;
         }
         return start;
     }
-    public boolean found(int sum)
-    {
-        if(head==null || head.next==null)
-        {
+
+    public boolean found(int sum) {
+        if (head == null || head.next == null) {
             return false;
         }
-        Node temp=head;
-        while(temp.next!=null)
-        {
-            if(temp.val==sum)
-            {
+        Node temp = head;
+        while (temp.next != null) {
+            if (temp.val == sum) {
                 return true;
             }
-            temp=temp.next;
+            temp = temp.next;
         }
         return false;
     }
-    public void magicBuild(int sum)
-    {
-        if(head==null || head.next==null)
-        {
-            return ;
+
+    public void magicBuild(int sum) {
+        if (head == null || head.next == null) {
+            return;
         }
         this.reverseList_iteration_notail();
-        Node temp=head;
-        int pos=1;
-        while(temp.val!=sum)
-        {
-            temp=temp.next;
+        Node temp = head;
+        int pos = 1;
+        while (temp.val != sum) {
+            temp = temp.next;
             pos++;
         }
         this.cycleCreation_notail(pos);
 
     }
 
-    public int mid()
-    {
-        if(head==null )
-        {
+    public int mid() {
+        if (head == null) {
             return -1;
-        }
-        else if(head.next==null)
-        {
+        } else if (head.next == null) {
             return head.val;
-        }
-        else
-        {
-            Node sing=head;
-            Node dou=head;
-            while(dou!=null && dou.next!=null)
-            {
+        } else {
+            Node sing = head;
+            Node dou = head;
+            while (dou != null && dou.next != null) {
 
-                    dou = dou.next.next;
+                dou = dou.next.next;
 
-                sing=sing.next;
+                sing = sing.next;
             }
             return sing.val;
         }
     }
 
-    public void reverse_range(int l,int r)
-    {
-        if(head==null || head.next==null)
-        {
+    public void reverse_range(int l, int r) {
+        if (head == null || head.next == null) {
             return;
         }
 
-        Node L=head;
-        Node R=head;
-        Node start=head;
-        Node End=null;
+        Node L = head;
+        Node R = head;
+        Node start = head;
+        Node End = null;
 
-        for(int i=1;i<l;i++)
-        {
-            start=L;
-            L=L.next;
+        for (int i = 1; i < l; i++) {
+            start = L;
+            L = L.next;
         }
-        for(int i=1;i<r;i++)
-        {
+        for (int i = 1; i < r; i++) {
 
-            R=R.next;
+            R = R.next;
         }
-        if(R.next!=null)
-        {
+        if (R.next != null) {
             End = R.next;
         }
-        R.next=null;
-        Node pres=L.next;
-        Node prev=L;
-       while(pres!=null)
-       {
-           Node next=pres.next;
-           pres.next=prev;
-           prev=pres;
-           pres=next;
-       }
-       if(l!=1) {
-           start.next = R;
-           L.next = End;
-       }
-       else
-       {
-           L.next = End;
-           this.head=R;
-       }
-
-    }
-
-public void reorder()
-{
-    if(head==null || head.next==null)
-    {
-        return ;
-    }
-    Node temp=head;
-    while(temp!=null)
-    {
-        Node start=temp;
-        while(start.next.next!=null)
-        {
-            start=start.next;
+        R.next = null;
+        Node pres = L.next;
+        Node prev = L;
+        while (pres != null) {
+            Node next = pres.next;
+            pres.next = prev;
+            prev = pres;
+            pres = next;
         }
-        Node tar=start.next;
-        start.next=null;
-        tar.next=temp.next;
-        temp.next=tar;
-        temp=tar.next;
-    }
-}
+        if (l != 1) {
+            start.next = R;
+            L.next = End;
+        } else {
+            L.next = End;
+            this.head = R;
+        }
 
-public void kNodesReverse(int n)
-{
-    if(head==null || head.next==null)
-    {
-        return;
-    }
-    Node prev=null;
-    Node pres=head;
-    Node last=prev;
-    Node newLast=pres;
-    while(pres!=null )
-   {
-       for (int i = 0;pres !=null && i < n; i++)
-       {
-           Node next = pres.next;
-           pres.next = prev;
-           prev = pres;
-           pres = next;
-           if (next != null) {
-               next = next.next;
-           }
-
-
-       }
-       if (last != null) {
-           last.next = prev;
-       } else {
-           head = prev;
-       }
-       newLast.next=pres;
-       last=newLast;
-       newLast=pres;
-
-   }
-
-}public void kNodesAlternateReverse(int n)
-{
-    if(head==null || head.next==null)
-    {
-        return;
-    }
-    Node prev=null;
-    Node pres=head;
-    Node last=prev;
-    Node newLast=pres;
-    while(pres!=null )
-   {
-       for (int i = 0;pres !=null && i < n; i++)
-       {
-           Node next = pres.next;
-           pres.next = prev;
-           prev = pres;
-           pres = next;
-           if (next != null) {
-               next = next.next;
-           }
-
-
-       }
-       if (last != null) {
-           last.next = prev;
-       } else {
-           head = prev;
-       }
-          newLast.next=pres;
-          for(int i=0;pres!=null && i<n;i++) {
-              prev = pres;
-              pres=pres.next;
-          }
-          last=prev;
-          newLast=pres;
-
-   }
-
-}
-    public void rotateLeft(int n)
-    {
-      if(n==this.size || head==null )
-      {
-          return;
-      }
-
-      for(int i=0;i<n;i++)
-      {
-          Node pres=head;
-          Node prev=null;
-          Node start=head;
-          while(pres.next!=null)
-          {
-              prev=pres;
-              pres=pres.next;
-          }
-          prev.next=null;
-          pres.next=start;
-          head=pres;
-
-      }
-    }
-public void rotateRight(int n)
-    {
-      if(n==this.size || head==null || head.next ==null)
-      {
-          return;
-      }
-
-      for(int i=0;i<n;i++)
-      {
-          Node pres=head;
-          Node start=head;
-          Node newStart=head.next;
-          while(pres.next!=null)
-          {
-              pres=pres.next;
-          }
-          start.next=null;
-          pres.next=start;
-          head=newStart;
-
-      }
     }
 
-    public int listBinary()
-    {
-        if(head == null)
-        {
+    public void reorder() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node temp = head;
+        while (temp != null) {
+            Node start = temp;
+            while (start.next.next != null) {
+                start = start.next;
+            }
+            Node tar = start.next;
+            start.next = null;
+            tar.next = temp.next;
+            temp.next = tar;
+            temp = tar.next;
+        }
+    }
+
+    public void kNodesReverse(int n) {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node prev = null;
+        Node pres = head;
+        Node last = prev;
+        Node newLast = pres;
+        while (pres != null) {
+            for (int i = 0; pres != null && i < n; i++) {
+                Node next = pres.next;
+                pres.next = prev;
+                prev = pres;
+                pres = next;
+                if (next != null) {
+                    next = next.next;
+                }
+
+
+            }
+            if (last != null) {
+                last.next = prev;
+            } else {
+                head = prev;
+            }
+            newLast.next = pres;
+            last = newLast;
+            newLast = pres;
+
+        }
+
+    }
+
+    public void kNodesAlternateReverse(int n) {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node prev = null;
+        Node pres = head;
+        Node last = prev;
+        Node newLast = pres;
+        while (pres != null) {
+            for (int i = 0; pres != null && i < n; i++) {
+                Node next = pres.next;
+                pres.next = prev;
+                prev = pres;
+                pres = next;
+                if (next != null) {
+                    next = next.next;
+                }
+
+
+            }
+            if (last != null) {
+                last.next = prev;
+            } else {
+                head = prev;
+            }
+            newLast.next = pres;
+            for (int i = 0; pres != null && i < n; i++) {
+                prev = pres;
+                pres = pres.next;
+            }
+            last = prev;
+            newLast = pres;
+
+        }
+
+    }
+
+    public void rotateLeft(int n) {
+        if (n == this.size || head == null) {
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            Node pres = head;
+            Node prev = null;
+            Node start = head;
+            while (pres.next != null) {
+                prev = pres;
+                pres = pres.next;
+            }
+            prev.next = null;
+            pres.next = start;
+            head = pres;
+
+        }
+    }
+
+    public void rotateRight(int n) {
+        if (n == this.size || head == null || head.next == null) {
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            Node pres = head;
+            Node start = head;
+            Node newStart = head.next;
+            while (pres.next != null) {
+                pres = pres.next;
+            }
+            start.next = null;
+            pres.next = start;
+            head = newStart;
+
+        }
+    }
+
+    public int listBinary() {
+        if (head == null) {
             return -1;
         }
-        int val=0;
+        int val = 0;
         this.reverseList_iteration_notail();
-        Node temp=head;
-        for(int i=0;temp!=null;i++)
-        {
-            val+=((int)(Math.pow(2,i)))*temp.val;
-            temp=temp.next;
+        Node temp = head;
+        for (int i = 0; temp != null; i++) {
+            val += ((int) (Math.pow(2, i))) * temp.val;
+            temp = temp.next;
         }
 
         return val;
     }
-     public void uniqueList(singly_list list2, singly_list list3)
-     {
-         Node tempA=this.head;
-         Node tempB=list2.head;
-         while(tempA.next!=null)
-         {
-             tempA=tempA.next;
-         }
-         while(tempB.next!=null)
-         {
-             tempB=tempB.next;
-         }
-         tempA.next=list3.head;
-         tempB.next=list3.head;
-     }
 
-     public int intersectionFound(singly_list list2)
-     {
-         Node tempA=this.head;
-         Node tempB=list2.head;
-         while(tempA!=null)
-         {
-             while(tempB!=null)
-             {
-                 if(tempB == tempA)
-                 {
-                     return tempB.val;
-                 }
-                 tempB=tempB.next;
-             }
-             tempB=list2.head;
-             tempA=tempA.next;
-         }
-
-
-         return -1;
-     }
-
-     public void Swaps(int pos)
-     {
-         if(head==null | head.next==null)
-         {
-             return ;
-         }
-         Node first=head;
-         Node first_pres=head;
-         Node Second=head;
-         Node Second_pres=head;
-         int run1=pos;
-         int run2=this.size-pos;
-
-         for(int i=1;i<run1 && first!=null;i++)
-         {
-             first=first.next;
-             if(i>1)
-             {
-                 first_pres=first_pres.next;
-
-             }
-         }
-         for(int i=0;i<run2 && Second!=null;i++)
-         {
-             Second=Second.next;
-             if(i>0)
-             {
-                 Second_pres=Second_pres.next;
-
-             }
-         }
-         if(pos==1)
-         {
-
-             Second.next=first.next;
-             head=Second;
-             Second_pres.next=first;
-             first.next=null;
-         }
-         else if(first.next==Second) {
-             first.next = Second.next;
-             Second.next = first;
-             first_pres.next = Second;
-         }
-         else if(first==Second)
-         {
-             return;
-         }
-         else
-         {
-             Node  temp=Second.next;
-             Second.next=first.next;
-             first_pres.next=Second;
-             Second_pres.next=first;
-             first.next=temp;
-         }
-
-     }
-     public singly_list addTwoList(singly_list list2)
-     {
-         singly_list res=new singly_list();
-         int rem=0;
-         Node temp1=this.head;
-         Node temp2=list2.head;
-         if(temp1==null)
-         {
-             return list2;
-         }
-         else if(temp2==null)
-         {
-             return this;
-         }
-
-         int val1=0;
-         int val2=0;
-
-         do {
-             if(temp1!=null)
-             {
-                 val1= temp1.val;
-                 temp1=temp1.next;
-             }
-             if(temp2!=null)
-             {
-                 val2= temp2.val;
-                 temp2=temp2.next;
-             }
-             res.insertFirstnotail((val1+val2+rem)%10);
-             rem=(val1+val2+rem)/10;
-             val1=0;
-             val2=0;
-         }while(temp1!=null || temp2!=null || rem!=0);
-        res.reverseList_iteration_notail();
-        return res;
-     }
-public singly_list addTwoListRight(singly_list list2)
-     {
-         singly_list res=new singly_list();
-         this.reverseList_iteration();
-         list2.reverseList_iteration();
-         int rem=0;
-         Node temp1=this.head;
-         Node temp2=list2.head;
-         if(temp1==null)
-         {
-             return list2;
-         }
-         else if(temp2==null)
-         {
-             return this;
-         }
-
-         int val1=0;
-         int val2=0;
-
-         do {
-             if(temp1!=null)
-             {
-                 val1= temp1.val;
-                 temp1=temp1.next;
-             }
-             if(temp2!=null)
-             {
-                 val2= temp2.val;
-                 temp2=temp2.next;
-             }
-             res.insertFirstnotail((val1+val2+rem)%10);
-             rem=(val1+val2+rem)/10;
-             val1=0;
-             val2=0;
-         }while(temp1!=null || temp2!=null || rem!=0);
-        return res;
-     }
-
-     public void RemoveDupSecond()
-     {
-         if(head==null && head.next==null)
-         {
-             return;
-         }
-         Node prev=null;
-         Node pres=head;
-         while(pres!=null)
-         {
-
-                 if( pres.next!=null && pres.next.val==pres.val)
-                 {
-                  while(pres.next!=null && pres.val==pres.next.val)
-                  {
-                      pres=pres.next;
-
-                  }
-
-                  if(prev==null)
-                  {
-                      head=pres.next;
-                  }
-                  else
-                  {
-                      prev.next=pres.next;
-                  }
-                  pres=pres.next;
-                 }
-                 else {
-                     prev = pres;
-                     pres = pres.next;
-                 }
-
-         }
-     }
-     public void partion(int x)
-     {
-         if(head==null | head.next==null)
-         {
-             return;
-         }
-         Node prev=head;
-         Node pres=head.next;
-         while(pres!=null)
-         {
-             if(pres.val<x) {
-
-                 Node temp = pres;
-                 Node last=head;
-                 while(last.val<x && last.next.val<x)
-                 {
-                     last=last.next;
-                 }
-
-                     prev.next = pres.next;
-
-
-                 if(last==head && last.val>=x)
-                 {
-                     temp.next=last;
-                     head=temp;
-                     pres = prev.next;
-
-                 }
-                 else {
-                     temp.next = last.next;
-                     last.next = temp;
-                     pres = prev.next;
-                 }
-
-             }
-             else
-             {
-                 prev=pres;
-                 pres=pres.next;
-             }
-         }
-
-     }
-public void removeConsecutivezero()
-{
-    if(head==null || head.next==null)
-    {
-        return;
+    public void uniqueList(singly_list list2, singly_list list3) {
+        Node tempA = this.head;
+        Node tempB = list2.head;
+        while (tempA.next != null) {
+            tempA = tempA.next;
+        }
+        while (tempB.next != null) {
+            tempB = tempB.next;
+        }
+        tempA.next = list3.head;
+        tempB.next = list3.head;
     }
-    Node prev=null;
-    Node pres=head;
-    while(head!=null && pres.next!=null )
-    {
-        if(pres.val+pres.next.val==0)
-        {
-            if(prev==null)
-            {
-                head=pres.next.next;
+
+    public int intersectionFound(singly_list list2) {
+        Node tempA = this.head;
+        Node tempB = list2.head;
+        while (tempA != null) {
+            while (tempB != null) {
+                if (tempB == tempA) {
+                    return tempB.val;
+                }
+                tempB = tempB.next;
             }
-            else
-            {
-                prev.next=pres.next.next;
-            }
-            pres=head;
-            prev=null;
+            tempB = list2.head;
+            tempA = tempA.next;
         }
-        else
-        {
-            prev=pres;
-            pres=pres.next;
-        }
-    }
-}
-public void StrictlyGreater() {
-    if (head == null || head.next == null) {
-        System.out.println("[]");
-        return;
-    }
-    ArrayList<Integer> listval = new ArrayList<>();
-    Node pres = head;
-    while (pres != null) {
-        Node temp = pres.next;
-        int max = pres.val;
-        while (temp != null) {
-            if (temp.val > max) {
-                max = temp.val;
-            }
-            temp = temp.next;
-        }
-        if (pres.val == max) {
-            listval.add(0);
-        } else {
-            listval.add(max);
-        }
-        pres = pres.next;
-    }
-    System.out.println(listval);
-}
 
-    public void oddEven()
-    {
-        if(head==null | head.next==null)
-        {
+
+        return -1;
+    }
+
+    public void Swaps(int pos) {
+        if (head == null | head.next == null) {
             return;
         }
-        Node oddEnd=null;
-        Node evenStart=head.next;
-        Node presodd=head;
-        Node preseven=head.next;
-        while(preseven!=null && presodd!=null)
-        {
-            presodd.next=presodd.next.next;
-            presodd=presodd.next;
-            preseven.next=preseven.next.next;
-            preseven=preseven.next;
+        Node first = head;
+        Node first_pres = head;
+        Node Second = head;
+        Node Second_pres = head;
+        int run1 = pos;
+        int run2 = this.size - pos;
+
+        for (int i = 1; i < run1 && first != null; i++) {
+            first = first.next;
+            if (i > 1) {
+                first_pres = first_pres.next;
+
+            }
+        }
+        for (int i = 0; i < run2 && Second != null; i++) {
+            Second = Second.next;
+            if (i > 0) {
+                Second_pres = Second_pres.next;
+
+            }
+        }
+        if (pos == 1) {
+
+            Second.next = first.next;
+            head = Second;
+            Second_pres.next = first;
+            first.next = null;
+        } else if (first.next == Second) {
+            first.next = Second.next;
+            Second.next = first;
+            first_pres.next = Second;
+        } else if (first == Second) {
+            return;
+        } else {
+            Node temp = Second.next;
+            Second.next = first.next;
+            first_pres.next = Second;
+            Second_pres.next = first;
+            first.next = temp;
+        }
+
+    }
+
+    public singly_list addTwoList(singly_list list2) {
+        singly_list res = new singly_list();
+        int rem = 0;
+        Node temp1 = this.head;
+        Node temp2 = list2.head;
+        if (temp1 == null) {
+            return list2;
+        } else if (temp2 == null) {
+            return this;
+        }
+
+        int val1 = 0;
+        int val2 = 0;
+
+        do {
+            if (temp1 != null) {
+                val1 = temp1.val;
+                temp1 = temp1.next;
+            }
+            if (temp2 != null) {
+                val2 = temp2.val;
+                temp2 = temp2.next;
+            }
+            res.insertFirstnotail((val1 + val2 + rem) % 10);
+            rem = (val1 + val2 + rem) / 10;
+            val1 = 0;
+            val2 = 0;
+        } while (temp1 != null || temp2 != null || rem != 0);
+        res.reverseList_iteration_notail();
+        return res;
+    }
+
+    public singly_list addTwoListRight(singly_list list2) {
+        singly_list res = new singly_list();
+        this.reverseList_iteration();
+        list2.reverseList_iteration();
+        int rem = 0;
+        Node temp1 = this.head;
+        Node temp2 = list2.head;
+        if (temp1 == null) {
+            return list2;
+        } else if (temp2 == null) {
+            return this;
+        }
+
+        int val1 = 0;
+        int val2 = 0;
+
+        do {
+            if (temp1 != null) {
+                val1 = temp1.val;
+                temp1 = temp1.next;
+            }
+            if (temp2 != null) {
+                val2 = temp2.val;
+                temp2 = temp2.next;
+            }
+            res.insertFirstnotail((val1 + val2 + rem) % 10);
+            rem = (val1 + val2 + rem) / 10;
+            val1 = 0;
+            val2 = 0;
+        } while (temp1 != null || temp2 != null || rem != 0);
+        return res;
+    }
+
+    public void RemoveDupSecond() {
+        if (head == null && head.next == null) {
+            return;
+        }
+        Node prev = null;
+        Node pres = head;
+        while (pres != null) {
+
+            if (pres.next != null && pres.next.val == pres.val) {
+                while (pres.next != null && pres.val == pres.next.val) {
+                    pres = pres.next;
+
+                }
+
+                if (prev == null) {
+                    head = pres.next;
+                } else {
+                    prev.next = pres.next;
+                }
+                pres = pres.next;
+            } else {
+                prev = pres;
+                pres = pres.next;
+            }
+
+        }
+    }
+
+    public void partion(int x) {
+        if (head == null | head.next == null) {
+            return;
+        }
+        Node prev = head;
+        Node pres = head.next;
+        while (pres != null) {
+            if (pres.val < x) {
+
+                Node temp = pres;
+                Node last = head;
+                while (last.val < x && last.next.val < x) {
+                    last = last.next;
+                }
+
+                prev.next = pres.next;
+
+
+                if (last == head && last.val >= x) {
+                    temp.next = last;
+                    head = temp;
+                    pres = prev.next;
+
+                } else {
+                    temp.next = last.next;
+                    last.next = temp;
+                    pres = prev.next;
+                }
+
+            } else {
+                prev = pres;
+                pres = pres.next;
+            }
+        }
+
+    }
+
+    public void removeConsecutivezero() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node prev = null;
+        Node pres = head;
+        while (head != null && pres.next != null) {
+            if (pres.val + pres.next.val == 0) {
+                if (prev == null) {
+                    head = pres.next.next;
+                } else {
+                    prev.next = pres.next.next;
+                }
+                pres = head;
+                prev = null;
+            } else {
+                prev = pres;
+                pres = pres.next;
+            }
+        }
+    }
+
+    public void StrictlyGreater() {
+        if (head == null || head.next == null) {
+            System.out.println("[]");
+            return;
+        }
+        ArrayList<Integer> listval = new ArrayList<>();
+        Node pres = head;
+        while (pres != null) {
+            Node temp = pres.next;
+            int max = pres.val;
+            while (temp != null) {
+                if (temp.val > max) {
+                    max = temp.val;
+                }
+                temp = temp.next;
+            }
+            if (pres.val == max) {
+                listval.add(0);
+            } else {
+                listval.add(max);
+            }
+            pres = pres.next;
+        }
+        System.out.println(listval);
+    }
+
+    public void oddEven() {
+        if (head == null | head.next == null) {
+            return;
+        }
+        Node oddEnd = null;
+        Node evenStart = head.next;
+        Node presodd = head;
+        Node preseven = head.next;
+        while (preseven != null && presodd != null) {
+            presodd.next = presodd.next.next;
+            presodd = presodd.next;
+            preseven.next = preseven.next.next;
+            preseven = preseven.next;
 
 
         }
-      presodd.next=evenStart;
+        presodd.next = evenStart;
 
 
     }
 
-public void getRandom()
-{
-    if(head==null )
-    {
-        System.out.println("Empty String");
-        return ;
-    }
-    Node temp=randpos;
-    for(int i=0;i<rand%this.size;i++)
-    {
-        if(temp!=null)
-        {
-            temp=temp.next;
+    public void getRandom() {
+        if (head == null) {
+            System.out.println("Empty String");
+            return;
         }
+        Node temp = randpos;
+        for (int i = 0; i < rand % this.size; i++) {
+            if (temp != null) {
+                temp = temp.next;
+            } else {
+                temp = head;
+            }
+
+        }
+        if (temp == null) {
+            temp = head;
+        }
+        System.out.println(temp.val);
+        randpos = temp;
+        rand = (rand + 1) % this.size;
+
+    }
+
+    private ArrayList<Node> split(int k) {
+        if (head == null) {
+            return new ArrayList<>();
+        }
+        ArrayList<Node> list = new ArrayList<>();
+
+        if (k == 1) {
+            list.add(this.head);
+        } else if (k >= this.size) {
+            Node temp = head;
+            while (temp != null) {
+                list.add(temp);
+                temp = temp.next;
+                list.getLast().next = null;
+            }
+        } else {
+
+            if (this.size % k == 0) {
+                Node temp = head;
+                Node next = null;
+                while (temp != null) {
+                    list.add(temp);
+                    for (int i = 0; i < (this.size / k) - 1 && temp != null; i++) {
+                        temp = temp.next;
+
+                    }
+                    next = temp.next;
+                    temp.next = null;
+                    temp = next;
+
+                }
+            } else {
+                Node temp = head;
+                Node next = null;
+                int count = this.size % k;
+                while (count > 0 && temp != null) {
+                    list.add(temp);
+                    count--;
+                    for (int i = 0; i < (this.size / k) && temp != null; i++) {
+                        temp = temp.next;
+
+                    }
+                    next = temp.next;
+                    temp.next = null;
+                    temp = next;
+
+                }
+                while (temp != null) {
+                    list.add(temp);
+                    for (int i = 0; i < (this.size / k) - 1 && temp != null; i++) {
+                        temp = temp.next;
+
+                    }
+                    next = temp.next;
+                    temp.next = null;
+                    temp = next;
+
+                }
+
+            }
+
+        }
+
+
+        return list;
+    }
+
+
+    public void displayListsplit(int k, int ele, int col) {
+        ArrayList<Node> list = this.split(k);
+        Node temp = list.get(ele);
+        for (int i = 0; i < col && temp != null; i++) {
+            temp = temp.next;
+        }
+        if (temp != null)
+            System.out.println(temp.val);
         else
-        {
-            temp=head;
+            System.out.println("Null");
+    }
+
+    public void minMax() {
+        if (head == null | head.next == null | head.next.next == null) {
+            System.out.println("[-1,-1]");
+            return;
         }
-
-    }
-    if(temp==null)
-    {
-        temp=head;
-    }
-    System.out.println(temp.val);
-    randpos=temp;
-    rand=(rand+1)%this.size;
-
-}
-
-private ArrayList<Node> split(int k)
-{
-    if(head==null)
-    {
-        return new ArrayList<>();
-    }
-    ArrayList<Node> list=new ArrayList<>();
-
-    if(k==1)
-    {
-        list.add(this.head);
-    }
-    else if(k>=this.size)
-    {
-        Node temp=head;
-        while(temp!=null)
-        {
-            list.add(temp);
-            temp=temp.next;
-            list.getLast().next=null;
-        }
-    }
-    else  {
-
-        if(this.size%k==0)
-        {
-            Node temp=head;
-            Node next=null;
-            while(temp!=null)
-            {
-                list.add(temp);
-                for(int i=0;i<(this.size/k)-1 && temp!=null;i++)
-                {
-                    temp=temp.next;
-
-                }
-                next=temp.next;
-                temp.next=null;
-                temp=next;
-
+        Node prev = head;
+        Node pres = head.next;
+        Node next = head.next.next;
+        int count = 2;
+        ArrayList<Integer> list = new ArrayList<>();
+        while (next != null) {
+            if (((pres.val < next.val) && (pres.val < prev.val)) || ((pres.val > next.val) && (pres.val >prev.val))) {
+                list.add(count);
             }
+            prev = pres;
+            pres = next;
+            next = next.next;
+            count++;
         }
-        else
-        {
-            Node temp=head;
-            Node next=null;
-            int count=this.size%k;
-            while(count>0 && temp!=null)
-            {
-                list.add(temp);
-                count--;
-                for(int i=0;i<(this.size/k) && temp!=null;i++)
-                {
-                    temp=temp.next;
+        if (list.size() < 2) {
+            System.out.println("[-1,-1]");
+        } else {
+            Collections.sort(list);
+            int max = list.getLast();
+            int min = list.getFirst();
 
-                }
-                next=temp.next;
-                temp.next=null;
-                temp=next;
+            int second_max = list.get(list.size()-2);
 
-            }
-            while(temp!=null)
-            {
-                list.add(temp);
-                for(int i=0;i<(this.size/k)-1 && temp!=null;i++)
-                {
-                    temp=temp.next;
-
-                }
-                next=temp.next;
-                temp.next=null;
-                temp=next;
-
-            }
-
+            System.out.println(list);
+            System.out.println("["+(max-second_max)+" , "+(max-min)+"]");
         }
-
     }
-
-
-    return list;
-}
-
-
-public void displayListsplit(int k,int ele,int col )
-{
-    ArrayList<Node> list=this.split(k);
-    Node temp=list.get(ele);
-    for(int i=0;i<col && temp!=null;i++)
-    {
-        temp=temp.next;
-    }
-    if(temp!=null)
-    System.out.println(temp.val);
-    else
-        System.out.println("Null");
-}
-
 
 
 

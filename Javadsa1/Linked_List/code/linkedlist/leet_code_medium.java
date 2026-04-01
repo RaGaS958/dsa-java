@@ -295,8 +295,20 @@ public class leet_code_medium {
 //        list.displayListsplit(2,1,2);
 
 // ------------------------------------------------------------------------------------------------------------
+        // question:-https://leetcode.com/problems/split-linked-list-in-parts/description/
 
+        singly_list list=new singly_list();
+        list.insertFirstnotail(2);
+        list.insertFirstnotail(1);
+        list.insertFirstnotail(5);
+        list.insertFirstnotail(2);
+        list.insertFirstnotail(1);
+        list.insertFirstnotail(3);
+        list.insertFirstnotail(5);
+        list.displays();
 
+        list.minMax();
+// ------------------------------------------------------------------------------------------------------------
 
     }
 
