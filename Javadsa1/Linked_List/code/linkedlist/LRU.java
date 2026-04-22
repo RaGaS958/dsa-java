@@ -89,6 +89,11 @@ public class LRU {
          }
          System.out.println();
      }
+
+
+
+
+
      private class Node
      {
          private Node next;
