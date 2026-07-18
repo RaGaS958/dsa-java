@@ -255,12 +255,117 @@ public class Leetcode_easy {
 //
 //
 //--------------------------------------------------------------------------------------------------------
+//question:-https://www.geeksforgeeks.org/problems/delete-middle-element-of-a-stack/1
 
+//  Scanner sc=new Scanner(System.in);
+//  Stack<Integer> s=new Stack<>();
+//System.out.println("Enter size:-");
+//int size=sc.nextInt();
+//
+//  for(int i=0;i<size;i++)
+//  {
+//      s.push(sc.nextInt());
+//
+//  }
+//
+// int mid=0;
+//
+//  if(size%2==0)
+//  {
+//      mid=size/2;
+//  }
+//  else
+//  {
+//      mid=(size/2)+1;
+//  }
+//        System.out.println(mid);
+//  for(int i=1;i<=size;i++)
+//  {
+//         if(i==mid)
+//         {
+//             s.pop();
+//
+//         }
+//         else {
+//             s.addFirst(s.pop());
+//         }
+//  }
+//  while(!(s.isEmpty()))
+//  {
+//      System.out.println(s.pop());
+//  }
+//--------------------------------------------------------------------------------------------------------
 
+//  question:-https://leetcode.com/problems/flood-fill/description/
 
+//      Stack<Integer> rows=new Stack<>();
+//      Stack<Integer> cols=new Stack<>();
+//
+//        int[][] arr = {
+//                {1, 1, 1},
+//                {1, 1, 0},
+//                {1, 0, 1}
+//        };
+//
+//        int sr=1;
+//        int sc=1;
+//        int color=2;
+//        int val=arr[1][1];
+//        int rsize=3;
+//        int csize=3;
+//
+//        rows.push(sr);
+//        cols.push(sc);
+//
+//
+//        while(!(rows.isEmpty() && cols.isEmpty()))
+//        {
+//            int r=rows.pop();
+//            int c=cols.pop();
+//            arr[r][c]=color;
+//            if((!(r+1>=rsize))  && arr[r+1][c]==val)
+//            {
+//               rows.push(r+1);
+//               cols.push(c);
+//
+//
+//            } if((!(c+1>=csize))  && arr[r][c+1]==val)
+//            {
+//               rows.push(r);
+//               cols.push(c+1);
+//
+//
+//            } if((!(r-1<0))  && arr[r-1][c]==val)
+//            {
+//               rows.push(r-1);
+//               cols.push(c);
+//
+//
+//            } if((!(c-1<0))  && arr[r][c-1]==val)
+//            {
+//               rows.push(r);
+//               cols.push(c-1);
+//
+//
+//            }
+//
+//        }
+//        for(int i=0;i<rsize;i++)
+//        {
+//            for(int j=0;j<csize;j++)
+//            {
+//                System.out.print(arr[i][j]);
+//            }
+//            System.out.println();
+//        }
+//
 
 //--------------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------------
+
+
+
+
+
 //--------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------
 
