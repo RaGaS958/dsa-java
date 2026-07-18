@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Stack;
 
 public class leetcode_medium {
@@ -9,48 +10,81 @@ public class leetcode_medium {
  //----------------------------------------------------------------------------------------
  // question:-https://leetcode.com/problems/decode-string/description/
 
-//String s="2[a]4[ac]er";
-//
-//StringBuilder ss=new StringBuilder();
-//Stack<String> series=new Stack<>();
-//int num=0;
-//String numextract="";
-//String current="";
+//String s="2[a]4[ac2[b]e]er";
+//Stack <String> decoder=new Stack<>();
 //for(int i=0;i<s.length();i++)
 //{
-//    char ch=s.charAt(i);
-//     if(ch > 47 && ch< 58) {
-//         while (s.charAt(i) > 47 && s.charAt(i) < 58) {
-//             numextract = numextract + s.substring(i, i + 1);
-//             i++;
-//         }
-//         num=Integer.parseInt(numextract);
-//     }
-//     else if(ch =='[')
-//     {
-//         int bkt=1;
-//         i++;
-//         while(bkt!=0) {
-//
-//             if(s.charAt(i)=='[')
-//             {
-//                 bkt+=1;
-//             }
-//             else if (s.charAt(i) == ']')
-//             {
-//                 bkt-=1;
-//             }
-//             else {
-//                 series.push(s.substring(i, i + 1));
-//             }
-//         }
-//     }
-//
-//
+//    decoder.push(s.substring(i,i+1));
 //}
-
-//to be done
-
+//
+//int count=0;
+//String num="";
+//String alpha="";
+//StringBuilder ss=new StringBuilder();
+//
+//while(!decoder.isEmpty())
+//{
+//    if(decoder.peek().charAt(0) == ']')
+//    {
+//        count =1;
+//        decoder.pop();
+//
+//        while(!decoder.isEmpty()  && count!=0)
+//        {
+//            if(decoder.peek().charAt(0) == ']')
+//            {
+//                count++;
+//            }
+//            if(decoder.peek().charAt(0) == '[')
+//            {
+//                count--;
+//            }
+//            alpha= decoder.pop()+alpha;
+//        }
+//        alpha=alpha.substring(1,alpha.length());
+//        System.out.println(alpha);
+//        while(!decoder.isEmpty())
+//        {
+//            if(decoder.peek().charAt(0)>=48 && decoder.peek().charAt(0)<=57)
+//            {
+//                num = decoder.pop() + num;
+//                System.out.println(num);
+//            }
+//            else
+//            {
+//                break;
+//            }
+//        }
+//        int times=0;
+//
+//        if(num!="")
+//         times=Integer.parseInt(num);
+//      String sumation="";
+//        for(int i=0;i<times;i++)
+//        {
+//
+//          sumation=alpha+sumation;
+//        }
+//        alpha=sumation;
+//        for(int i=0;i<alpha.length();i++)
+//        {
+//            decoder.push(alpha.substring(i,i+1));
+//        }
+//     num="";
+//        alpha="";
+//
+//    }
+//    else
+//    {
+//     ss.append(decoder.pop());
+//    }
+//}
+//
+//        System.out.println(ss.reverse().toString());
+//
+//
+//
+////to be done
 
  //----------------------------------------------------------------------------------------
  //question:-https://leetcode.com/problems/asteroid-collision/description/
@@ -270,12 +304,51 @@ public class leetcode_medium {
 //        System.out.println(a.reversed());
 
  //----------------------------------------------------------------------------------------
+// // Question :- https://www.geeksforgeeks.org/problems/circular-tour-1587115620/1
+//
+//Stack <Integer> position=new Stack<>();
+//int [] gas = {3,9} ;
+//int [] cost = {7,6} ;
+//
+//for(int i=0;i<gas.length;i++)
+//{
+//    if(gas[i]>cost[i])
+//    {
+//        position.push(i);
+//    }
+//
+//}
+//
+//ArrayList<Integer> valid=new ArrayList<>();
+//
+//while(!position.isEmpty())
+//{
+//    int residue=0;
+//    int start=position.pop();
+//    for(int i = 0;i< gas.length;i=i+1)
+//    {
+//        residue=residue+(gas[start]-cost[start]);
+//        start=(start+1)% gas.length;
+//        if(residue <0)
+//        {
+//            break;
+//        }
+//    }
+//    if(residue>=0)
+//    {
+//        valid.add(start);
+//    }
+//
+//}
+//        if(valid.isEmpty())
+//            System.out.println(-1);
+//        else
+//        System.out.println(valid);
+//
+ //----------------------------------------------------------------------------------------
 
 
 
-
-
-        
  //----------------------------------------------------------------------------------------
  //----------------------------------------------------------------------------------------
  //----------------------------------------------------------------------------------------
@@ -284,9 +357,8 @@ public class leetcode_medium {
  //----------------------------------------------------------------------------------------
  //----------------------------------------------------------------------------------------
  //----------------------------------------------------------------------------------------
- //----------------------------------------------------------------------------------------
-
-
-
     }
+
+
+
 }
