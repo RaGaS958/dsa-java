@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Stack;
+import java.util.*;
 
 public class leetcode_medium {
 
@@ -346,18 +344,277 @@ public class leetcode_medium {
 //        System.out.println(valid);
 //
  //----------------------------------------------------------------------------------------
+////question:-https://leetcode.com/problems/task-scheduler/description/
+//
+//        String arr[]={"A","C","A","B","D","B"};
+//        int n=1; // gap
+//        ArrayList<String>task=new ArrayList<>();
+//        ArrayList<Integer>task_num=new ArrayList<>();
+//        Arrays.sort(arr);
+//        int count =1;
+//        // for creating counters for each
+//        for(int i=0;i<=arr.length;i++)
+//        {
+//            // for end of loop
+//            if(i==arr.length)
+//            {
+//                task_num.add(count);
+//                break;
+//
+//            }
+//            else {
+//                 // for start of loop
+//                if(task.isEmpty())
+//                {
+//                    task.add(arr[0]);
+//                }
+//                else {
+//
+//                    if (arr[i] == task.getLast()) {
+//                        count++;
+//                    }
+//                    else {
+//                        task_num.add(count);
+//                        task.add(arr[i]);
+//                        count = 1;
+//                    }
+//                }
+//            }
+//        }
+//        int slots[]=new int [task.size()];
+//        System.out.println("--------------------------------------------------------------");
+//        System.out.println("TASK SCHEDULER METRICS");
+//        System.out.println("Initial cool down :- "+Arrays.toString(slots));
+//        System.out.println("Cpu Tasks :- "+task);
+//        System.out.println("Cpu Tasks Number :- "+task_num);
+//        System.out.println("--------------------------------------------------------------");
+//
+//        Queue<Integer> taskScheduler=new LinkedList<>();
+//
+//        for(int i=0;i<task.size();i++)
+//        {
+//            taskScheduler.offer(i);
+//        }
+//        int min_CpuInterval=0;
+//
+//        while(!taskScheduler.isEmpty())
+//        {
+//            int start=taskScheduler.peek();
+//            if(task_num.get(start)!=0)
+//            {
+//                if(slots[start]==0)
+//                {
+//                    slots[start]=n+1;
+//                    taskScheduler.offer(taskScheduler.remove());
+//                    min_CpuInterval+=1;
+//                    task_num.set(start,task_num.get(start)-1);
+//                    System.out.print(task.get(start)+" -> ");
+//                }
+//                else
+//                {
+//                    min_CpuInterval+=1;
+//                    System.out.print(" idle -> ");
+//                }
+//
+//            }
+//            else
+//            {
+//                taskScheduler.remove();
+//            }
+//            for(int i=0;i<slots.length;i++)
+//            {
+//                if(slots[i]>0)
+//                {
+//                    slots[i]-=1;
+//                }
+//            }
+//        }
+//        System.out.println("End");
+//        System.out.println("Min CPU INTERVAL = "+min_CpuInterval);
+
+ //----------------------------------------------------------------------------------------
+//  //question:-https://www.geeksforgeeks.org/problems/stock-span-problem-1587115621/1
+//
+//  int [] arr={10, 4, 5, 90, 120, 80};
+//  Stack<Integer> stock1=new Stack<>();
+//  Stack<Integer> stock2=new Stack<>();
+//  ArrayList<Integer> stockSpans=new ArrayList<>();
+//
+//  for(int i=0;i<arr.length;i++)
+//  {
+//      stock1.push(arr[i]);
+//
+//  }
+//  int span=1;
+//  while(!stock1.isEmpty())
+//  {
+//
+//      int start=stock1.pop();
+//      while(!stock1.isEmpty() && stock1.peek()<start)
+//      {
+//          span+=1;
+//          stock2.push(stock1.pop());
+//      }
+//      stockSpans.add(span);
+//      while(!stock2.isEmpty())
+//      {
+//          stock1.push(stock2.pop());
+//      }
+//      span=1;
+//  }
+//        System.out.println(stockSpans.reversed());
+//
+
+ //----------------------------------------------------------------------------------------
+// question:https://www.geeksforgeeks.org/problems/max-rectangle/1
 
 
+// int[][] mat = {
+//                {0, 1, 1},
+//                {1, 1, 1},
+//                {0, 1, 1}
+//        };
+//
+//
+// int [][] mat_h=mat;
+// int [][] mat_v=new int[mat.length][mat[0].length];
+// for(int i=0;i<mat.length;i++)
+// {
+//     for(int j=0;j<mat[0].length;j++)
+//     {
+//         mat_v[i][j]=mat[j][i];
+//     }
+// }
+//
+//    Stack<Integer> horizontal=new Stack<>();
+//   for(int i=mat_h.length;i>-1;i--)
+//   {
+//       horizontal.push(i);
+//   }
+//
+// Stack<Integer> Vertical =new Stack<>();
+//        for(int i=mat_h.length;i>-1;i--)
+//        {
+//            Vertical.push(i);
+//        }
+//
+// int max_sum=0;
+//
+// // Horizontal analysis
+//
+//        while(!horizontal.isEmpty())
+//        {
+//
+//        }
 
- //----------------------------------------------------------------------------------------
- //----------------------------------------------------------------------------------------
- //----------------------------------------------------------------------------------------
- //----------------------------------------------------------------------------------------
- //----------------------------------------------------------------------------------------
- //----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------
+
+//question:-https://leetcode.com/problems/snakes-and-ladders/description/
+
+//int board[][]={
+//        {-1, -1, -1, -1, -1, -1},
+//        {-1, -1, -1, -1, -1, -1},
+//        {-1, -1, -1, -1, -1, -1},
+//        {-1, 35, -1, -1, 13, -1},
+//        {-1, -1, -1, -1, -1, -1},
+//        {-1, 15, -1, -1, -1, -1}
+//};
+//
+//Stack<Integer> val=new Stack<>();
+//Stack<Integer> pos=new Stack<>();
+//int boardVal=board.length * board.length;
+//for(int i=0;i<board.length;i++)
+//{
+//    if(i%2==0)
+//    {
+//        for(int j=0;j<board[0].length;j++)
+//        {
+//            val.push(board[i][j]);
+//            pos.push(boardVal);
+//            boardVal-=1;
+//
+//        }
+//    }
+//    else
+//    {
+//        for(int j=board[0].length-1;j>-1;j--)
+//        {
+//            val.push(board[i][j]);
+//            pos.push(boardVal);
+//            boardVal-=1;
+//
+//        }
+//    }
+//}
+//
+//int curr=1;
+//
+//int output=snakeLadder(val,pos,curr,0,board.length*board.length);
+//System.out.println(output);
+
+
  //----------------------------------------------------------------------------------------
  //----------------------------------------------------------------------------------------
     }
+//-----------------------------------------------------------------------------------------
+//function of  question:-https://leetcode.com/problems/snakes-and-ladders/description/
+
+//static int snakeLadder(Stack<Integer> val ,Stack<Integer> pos,int curr,int output,int n)
+//{
+//    return gameStart(val,pos,curr,output,n);
+//}
+//
+//private static int gameStart(Stack<Integer> val ,Stack<Integer> pos,int curr,int output,int n)
+//{
+//    if (val.isEmpty())
+//{
+//        return output;
+//    }
+//
+//    int start=curr+1;
+//    int end=Math.min(curr+6,n*n);
+//    int currOutput=99999999;
+//    for(int i=start;i<=end;i++)
+//    {
+//        int next=i;
+//        if(pos.peek()>next)
+//        {
+//            continue;
+//        }
+//        else
+//        {
+//            while(pos.peek()!=next)
+//            {
+//                pos.pop();
+//                val.pop();
+//            }
+//        }
+//        if(val.peek()!=-1)
+//        {
+//            next=val.peek();
+//        }
+//        output+=1;
+//        output=gameStart(val,pos,next,output,n);
+//
+//        if(output<currOutput)
+//        {
+//            currOutput=output;
+//        }
+//        output-=1;
+//
+//    }
+//    return currOutput;
+//}
+
+
+
+
+//----------------------------------------------------------------------------------------
+
+
+
+
+
 
 
 
